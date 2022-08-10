@@ -1,0 +1,64 @@
+<form action="" id="form-chave">
+
+    <fieldset>
+        <legend>Dados da Nota Fiscal Eletrônica: </legend>
+        
+            <div>
+                <label for="uf">Estado (UF): </label>
+                <select name="uf" id="uf">
+                    <option [value]="uf" *ngFor="let uf of ufs" >{{uf}}</option>
+                </select>
+            
+            </div>
+
+            <div>
+                <label for="emissao">Emissão: </label>
+                <input type="date" name="emissao" id="emissao" required>
+            
+            </div>
+            
+            <div>
+                <label for="cnpj">CNPJ Emitente: </label>
+                <input type="number" name="cnpj" id="cnpj" min="0" max="99999999999999" maxlength="14" required>
+            </div>
+
+            <div>
+                <label for="modelo">Modelo NF: </label>
+                <input type="number" name="modelo" id="modelo" value="55" disabled required>    
+            </div>
+
+            <div>
+                <label for="serie">Série NF: </label>
+                <input type="number" name="serie" id="serie" min="1" max="99" maxlength="3" required>  
+            </div>
+
+            <div>
+                <label for="numeroNF">Número NF: </label>
+                <input type="number" name="numeroNF" id="numeroNF" min="1" max="999999999" maxlength="9" required>  
+            </div>
+
+            <div>
+                <label for="formaEmissao">Forma de Emissão: </label>
+                <input type="number" name="formaEmissao" id="formaEmissao" value="1"  disabled required>    
+            </div>
+
+            <div>
+                <label for="formaEmissao">Código Númerico </label>
+                <input type="number" name="formaEmissao" id="formaEmissao" value="12345678" disabled maxlength="8" required>    
+            </div>
+            
+            <input type="submit" value="Gerar Chave de Acesso">
+
+    </fieldset>
+    
+</form>
+
+<fieldset>
+    <legend>Chave de Acesso: </legend>
+    
+    <div class="chave-nfe">
+        <input type="text" name="chave" id="chave"  value="32191105570714000825550010059146621133082968" disabled> 
+        <button>Copiar</button>   
+    </div>
+
+</fieldset>
