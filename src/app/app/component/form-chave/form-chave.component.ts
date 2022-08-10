@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ChaveEletronicaNfe, UFEstado } from 'src/app/models/chave';
+import { ChaveEletronicaNfe } from 'src/app/models/chave';
+import { Estado } from 'src/app/models/estado';
+import { DataserviceService } from 'src/app/service/dataservice.service';
 
 
 @Component({
@@ -9,10 +11,10 @@ import { ChaveEletronicaNfe, UFEstado } from 'src/app/models/chave';
 })
 export class FormChaveComponent implements OnInit {
 
-  ufs = Object.values(UFEstado);
+  ufs : Array<Estado> = this.dataService.getEstado();
 
   dadosChaveAcesso: ChaveEletronicaNfe = {
-    uf: 35,
+    uf: "",
     aamm: "",
     cnpj: "",
     modelo: "",
@@ -22,11 +24,11 @@ export class FormChaveComponent implements OnInit {
     codigoNumerico: "",
   };
 
-  constructor() { }
+  constructor(private dataService:DataserviceService) {
+  }
 
   ngOnInit(): void {
-
-    console.log(this.dadosChaveAcesso);
+    console.log(this.ufs);
 
   }
 
