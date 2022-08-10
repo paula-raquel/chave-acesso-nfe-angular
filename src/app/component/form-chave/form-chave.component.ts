@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ChaveEletronicaNfe } from 'src/app/models/chave';
-import { Estado } from 'src/app/models/estado';
 import { DataserviceService } from 'src/app/service/dataservice.service';
 
 
