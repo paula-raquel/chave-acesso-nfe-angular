@@ -10,6 +10,7 @@ export class DataserviceService {
 
   getEstado():Estado[]{
     return [
+      {codigoIBGE:35, nome:"São Paulo", uf: "SP", regiao:"Sudeste"},
       {codigoIBGE: 11, nome:"Rondônia", uf: "RO", regiao:"Norte"},
       {codigoIBGE:12, nome:"Amazonas", uf:"AC", regiao:"Norte"},
       {codigoIBGE:13, nome:"Acre",  uf: "AM", regiao:"Norte"},
@@ -29,7 +30,6 @@ export class DataserviceService {
       {codigoIBGE:31, nome:"Minas Gerais",  uf:"MG", regiao:"Sudeste"},
       {codigoIBGE:32, nome:"Espírito Santo", uf:"ES", regiao:"Sudeste"},
       {codigoIBGE:33, nome:"Rio de Janeiro",  uf:"RJ", regiao:"Sudeste"},
-      {codigoIBGE:35, nome:"São Paulo", uf: "SP", regiao:"Sudeste"},
       {codigoIBGE:41, nome:"Paraná",  uf:"PR", regiao:"Sul"},
       {codigoIBGE:42, nome:"Santa Catarina",  uf:"SC", regiao:"Sul"},
       {codigoIBGE:43, nome:"Rio Grande do Sul", uf: "RS", regiao:"Sul"},

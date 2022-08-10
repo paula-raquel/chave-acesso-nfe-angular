@@ -1,9 +1,10 @@
 export class Estado{
     constructor(
-        codigoIBGE: number,
-        nome: String,
-        uf: String,
-        regiao: String
+        public codigoIBGE: number,
+        public nome: String,
+        public uf: String,
+        public regiao: String
     ){}
+    
    
 }

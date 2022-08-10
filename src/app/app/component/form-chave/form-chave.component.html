@@ -6,7 +6,7 @@
             <div>
                 <label for="uf">Estado (UF): </label>
                 <select name="uf" id="uf">
-                    <option [value]="uf" *ngFor="let uf of ufs" >{{uf}}</option>
+                    <option [value]="uf.codigoIBGE" *ngFor="let uf of ufs " >{{uf.nome}} ({{uf.uf}})</option>
                 </select>
             
             </div>

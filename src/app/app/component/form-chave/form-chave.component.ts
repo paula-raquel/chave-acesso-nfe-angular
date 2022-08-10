@@ -11,7 +11,7 @@ import { DataserviceService } from 'src/app/service/dataservice.service';
 })
 export class FormChaveComponent implements OnInit {
 
-  ufs : Array<Estado> = this.dataService.getEstado();
+  ufs = this.dataService.getEstado();
 
   dadosChaveAcesso: ChaveEletronicaNfe = {
     uf: "",
