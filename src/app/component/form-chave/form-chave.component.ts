@@ -34,14 +34,46 @@ export class FormChaveComponent implements OnInit {
     this.formatadorSerie(this.serie);
     this.formatadorNumeroNotaFiscal(this.numeroNF);
     this.geradorChave43();
-    this.geradorDigitoVerificador(this.chaveAcesso43);
+    this.digitoVerificador = this.geradorDigitoVerificador(this.chaveAcesso43);
+    this.geradorChave44();
   }
 
   geradorChave44(){
     this.chaveAcesso44 = this.chaveAcesso43 + this.digitoVerificador;
+    console.log(this.chaveAcesso44);
   }
-  geradorDigitoVerificador(chave43:string){
-    console.log(chave43);
+
+  geradorDigitoVerificador(chave43:string):string{
+
+    var indice = 0;
+    var multiplicador = 4
+    var somaPoderada = 0;
+    var restoDivisao = 0;
+    var digitoVerificadorCalculado = 0;
+    
+    while(indice < 43){
+
+      if(multiplicador < 2){
+        multiplicador = 9
+      }
+
+      if(multiplicador >= 2 && multiplicador <=9){
+        somaPoderada += Number(chave43[indice]) * Number(multiplicador);
+      }
+        indice++;
+        multiplicador--;
+    }
+
+    restoDivisao = somaPoderada % 11;
+
+    if(restoDivisao == 0 || restoDivisao == 1 ){
+      digitoVerificadorCalculado = 0;
+    }else{
+      digitoVerificadorCalculado = 11 - restoDivisao;
+    }
+
+    return String(digitoVerificadorCalculado)
+
   }
 
   geradorChave43(){
