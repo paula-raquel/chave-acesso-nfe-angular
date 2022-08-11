@@ -59,7 +59,7 @@
     
     <div class="chave-nfe">
         <input type="text" name="chave" id="chave" [value]="chaveAcesso44" disabled> 
-        <button>Copiar</button>  
+        <button [cdkCopyToClipboard]="chaveAcesso44">Copiar</button>  
         <span>Tamanho: {{chaveAcesso44.length}}</span>
     </div>
 
