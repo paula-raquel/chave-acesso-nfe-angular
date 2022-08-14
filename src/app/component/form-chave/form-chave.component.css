@@ -1,10 +1,34 @@
 
+.container{
+    width: 100wh;
+    height: 87.5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+
+    
+}
+
+.container__form{
+    background-color: aliceblue;
+    width: 600px;
+    height: auto;
+    border-radius: 16px;
+    padding: 10px;
+}
+
+h1{
+    text-align: center;
+}
+
 legend{
     font-weight: bold;
 }
 
 form div {
-    margin: 10px 10px 10px 50px;
+    margin: 10px 10px 10px 30px;
+    
 }
 
 input[type=submit]{
@@ -33,6 +57,7 @@ fieldset{
 .chave-nfe input{
     width: 80%;
     margin-left: 5px;
+    padding: 2px;
 }
 
 button{
