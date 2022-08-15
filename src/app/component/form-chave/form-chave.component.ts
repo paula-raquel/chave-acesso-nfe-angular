@@ -25,18 +25,22 @@ export class FormChaveComponent implements OnInit {
   }
 
   
+  
   ngOnInit(): void {
 
     this.formulario = this.formBuilder.group({
       uf: ['35'],
       emissao: ['',[Validators.required]],
       cnpj: ['',[Validators.minLength(14), Validators.maxLength(14), Validators.required]],
-      modelo: ['55'],
+      modelo: [{value: '55', disabled: true}],
       serie: ['',[Validators.required]],
       numeroNF: ['', [Validators.required]],
-      formaEmissao: ['1'],
-      codigoNumerico: ['12345678'],
-    });
+      formaEmissao: [{value:'1', disabled:true}],
+      codigoNumerico: [{value:'12345678', disabled:true}],
+    })
+
+    //   this.formulario.controls['modelo'].disable();
+
 
   }
 
@@ -89,9 +93,9 @@ export class FormChaveComponent implements OnInit {
   }
 
   geradorChave43(){
-    this.chaveAcesso43 = this.formulario.value.uf + this.aamm + this.formulario.value.cnpj + this.formulario.value.modelo 
-                          + this.formulario.value.serie + this.formulario.value.numeroNF + this.formulario.value.formaEmissao
-                           + this.formulario.value.codigoNumerico;
+    this.chaveAcesso43 = this.formulario.value.uf + this.aamm + this.formulario.value.cnpj + this.formulario.get('modelo')?.value 
+                          + this.formulario.value.serie + this.formulario.value.numeroNF + this.formulario.get('formaEmissao')?.value
+                           + this.formulario.get('codigoNumerico')?.value;
   }
 
   formatadorData(data:string):void{
