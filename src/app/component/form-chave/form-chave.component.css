@@ -31,6 +31,10 @@ form div {
     
 }
 
+form input:disabled{
+    border: none;
+}
+
 input[type=submit]{
     background-color: #04AA6D;
     border: none;

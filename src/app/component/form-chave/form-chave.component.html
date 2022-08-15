@@ -25,10 +25,11 @@
                     <label for="cnpj">CNPJ Emitente: </label>
                     <input type="number" name="cnpj" id="cnpj" formControlName="cnpj" [minlength]="14">
                 </div>
-                <div class="inputError" *ngIf="formulario.get('cnpj')?.errors?.['required']">
+                <div class="inputError" *ngIf="formulario.get('cnpj')?.errors?.['required'] 
+                    && formulario.controls['cnpj']?.touched">
                     CNPJ é obrigatório!
                 </div>
-                <div class="inputError" *ngIf="formulario.get('cnpj')?.errors?.['minlength']">
+                <div class="inputError" *ngIf="formulario.get('cnpj')?.hasError('minlength')">
                     Campo inválido , preenchimento obrigatório com 14 digitos!
                 </div>
 
@@ -42,8 +43,9 @@
                     <label for="serie">Série NF: </label>
                     <input type="number" name="serie" id="serie" formControlName="serie">  
                 </div>
-                <div class="inputError" *ngIf="formulario.get('serie')?.errors?.['required']">
-                    Data Emissão é obrigatória!
+                <div class="inputError" *ngIf="formulario.get('serie')?.errors?.['required'] 
+                    && formulario.controls['serie']?.touched">
+                    Série é obrigatória!
                 </div>
 
 
@@ -51,8 +53,9 @@
                     <label for="numeroNF">Número NF: </label>
                     <input type="number" name="numeroNF" id="numeroNF" formControlName="numeroNF">  
                 </div>
-                <div class="inputError" *ngIf="formulario.get('numeroNF')?.errors?.['required']">
-                    Data Emissão é obrigatória!
+                <div class="inputError" *ngIf="formulario.get('numeroNF')?.errors?.['required'] 
+                    && formulario.controls['numeroNF']?.touched">
+                    Número da NF é obrigatório!
                 </div>
 
 

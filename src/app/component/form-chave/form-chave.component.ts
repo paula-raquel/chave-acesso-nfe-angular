@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DataserviceService } from 'src/app/service/dataservice.service';
 
@@ -19,13 +19,11 @@ export class FormChaveComponent implements OnInit {
 
   formulario!: FormGroup;
 
-
   constructor(
     private dataService:DataserviceService, private formBuilder:FormBuilder) {
   }
 
-  
-  
+
   ngOnInit(): void {
 
     this.formulario = this.formBuilder.group({
@@ -44,7 +42,6 @@ export class FormChaveComponent implements OnInit {
 
   }
 
- 
   getDataForm():void{
     this.formatadorData(this.formulario.value.emissao);
     this.formatadorSerie(this.formulario.value.serie);
@@ -105,18 +102,18 @@ export class FormChaveComponent implements OnInit {
   }
 
   formatadorSerie(value:string){
-    this.formulario.value.serie = this.adicionarZeros(value, 3);
+    this.formulario.get('serie')?.setValue(this.adicionarZeros(value, 3));
   }
 
   formatadorNumeroNotaFiscal(value:string){
-    this.formulario.value.numeroNF = this.adicionarZeros(value, 9);
+    this.formulario.get('numeroNF')?.setValue(this.adicionarZeros(value, 9));
   }
 
-  adicionarZeros(num:string, len:number) {
+  adicionarZeros(num:string, length:number) {
     var numeroComZero = String(num);
     var contador = numeroComZero.length;
       
-    while(contador < len) {
+    while(contador < length) {
       numeroComZero = "0" + numeroComZero;
       contador++;
     }
