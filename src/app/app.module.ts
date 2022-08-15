@@ -9,6 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ClipboardModule }  from '@angular/cdk/clipboard';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +20,8 @@ import { ClipboardModule }  from '@angular/cdk/clipboard';
     BrowserModule,
     FormsModule,
     BrowserAnimationsModule,
-    ClipboardModule
+    ClipboardModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

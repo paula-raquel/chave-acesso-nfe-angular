@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DataserviceService } from 'src/app/service/dataservice.service';
 
 
@@ -14,25 +15,36 @@ export class FormChaveComponent implements OnInit {
   chaveAcesso44 = '';
   chaveAcesso43 = '';
   digitoVerificador = '0';
-  
-  uf='35';
-  emissao= '';
-  cnpj='';
-  modelo = '55';
-  serie='';
-  numeroNF='';
-  formaEmissao = '1';
-  codigoNumerico = '12345678';
-  aamm='';
+  aamm = '';
+
+  formulario!: FormGroup;
+
 
   constructor(
-    private dataService:DataserviceService, 
-    ) {}
+    private dataService:DataserviceService, private formBuilder:FormBuilder) {
+  }
 
+  
+  ngOnInit(): void {
+
+    this.formulario = this.formBuilder.group({
+      uf: ['35'],
+      emissao: ['',[Validators.required]],
+      cnpj: ['',[Validators.minLength(14), Validators.maxLength(14), Validators.required]],
+      modelo: ['55'],
+      serie: ['',[Validators.required]],
+      numeroNF: ['', [Validators.required]],
+      formaEmissao: ['1'],
+      codigoNumerico: ['12345678'],
+    });
+
+  }
+
+ 
   getDataForm():void{
-    this.formatadorData(this.emissao);
-    this.formatadorSerie(this.serie);
-    this.formatadorNumeroNotaFiscal(this.numeroNF);
+    this.formatadorData(this.formulario.value.emissao);
+    this.formatadorSerie(this.formulario.value.serie);
+    this.formatadorNumeroNotaFiscal(this.formulario.value.numeroNF);
     this.geradorChave43();
     this.digitoVerificador = this.geradorDigitoVerificador(this.chaveAcesso43);
     this.geradorChave44();
@@ -77,8 +89,9 @@ export class FormChaveComponent implements OnInit {
   }
 
   geradorChave43(){
-    this.chaveAcesso43 = this.uf + this.aamm + this.cnpj + this.modelo 
-                          + this.serie + this.numeroNF + this.formaEmissao + this.codigoNumerico;
+    this.chaveAcesso43 = this.formulario.value.uf + this.aamm + this.formulario.value.cnpj + this.formulario.value.modelo 
+                          + this.formulario.value.serie + this.formulario.value.numeroNF + this.formulario.value.formaEmissao
+                           + this.formulario.value.codigoNumerico;
   }
 
   formatadorData(data:string):void{
@@ -88,11 +101,11 @@ export class FormChaveComponent implements OnInit {
   }
 
   formatadorSerie(value:string){
-    this.serie = this.adicionarZeros(value, 3);
+    this.formulario.value.serie = this.adicionarZeros(value, 3);
   }
 
   formatadorNumeroNotaFiscal(value:string){
-    this.numeroNF = this.adicionarZeros(value, 9);
+    this.formulario.value.numeroNF = this.adicionarZeros(value, 9);
   }
 
   adicionarZeros(num:string, len:number) {
@@ -106,7 +119,5 @@ export class FormChaveComponent implements OnInit {
     return numeroComZero;
   }
 
-  ngOnInit(): void {
-  }
 
 }
