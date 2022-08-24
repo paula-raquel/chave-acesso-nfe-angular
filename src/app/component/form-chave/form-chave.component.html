@@ -23,14 +23,14 @@
                 
                 <div>
                     <label for="cnpj">CNPJ Emitente: </label>
-                    <input type="number" name="cnpj" id="cnpj" formControlName="cnpj" [minlength]="14">
+                    <input type="text" name="cnpj" id="cnpj" formControlName="cnpj" [minlength]="14">
                 </div>
                 <div class="inputError" *ngIf="formulario.get('cnpj')?.errors?.['required'] 
                     && formulario.controls['cnpj']?.touched">
                     CNPJ é obrigatório!
                 </div>
-                <div class="inputError" *ngIf="formulario.get('cnpj')?.hasError('minlength')">
-                    Campo inválido , preenchimento obrigatório com 14 digitos!
+                <div class="inputError" *ngIf="formulario.get('cnpj')?.hasError('minlength') && formulario.controls['cnpj']?.touched">
+                    Campo inválido, preenchimento obrigatório com 14 números!
                 </div>
 
 

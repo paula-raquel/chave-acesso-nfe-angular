@@ -53,7 +53,6 @@ export class FormChaveComponent implements OnInit {
 
   geradorChave44(){
     this.chaveAcesso44 = this.chaveAcesso43 + this.digitoVerificador;
-    console.log(this.chaveAcesso44);
   }
 
   geradorDigitoVerificador(chave43:string):string{
@@ -93,6 +92,7 @@ export class FormChaveComponent implements OnInit {
     this.chaveAcesso43 = this.formulario.value.uf + this.aamm + this.formulario.value.cnpj + this.formulario.get('modelo')?.value 
                           + this.formulario.value.serie + this.formulario.value.numeroNF + this.formulario.get('formaEmissao')?.value
                            + this.formulario.get('codigoNumerico')?.value;
+
   }
 
   formatadorData(data:string):void{
