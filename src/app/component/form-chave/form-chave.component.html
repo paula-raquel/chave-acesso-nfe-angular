@@ -3,7 +3,7 @@
     <div class="container__form">
     
     <form id="form-chave" [formGroup]="formulario" (submit)="getDataForm()">
-        <h1>Gerador Chave de Acesso NFe</h1>
+        <h1>Gerador Chave de Acesso</h1>
 
         <fieldset>
             <legend>Dados da Nota Fiscal Eletrônica: </legend>
@@ -13,7 +13,6 @@
                     <select name="uf" id="uf" formControlName="uf">
                         <option [value]="uf.codigoIBGE" *ngFor="let uf of ufs " >{{uf.nome}} ({{uf.uf}})</option>
                     </select>
-                
                 </div>
 
                 <div>
@@ -33,10 +32,12 @@
                     Campo inválido, preenchimento obrigatório com 14 números!
                 </div>
 
-
                 <div>
-                    <label for="modelo">Modelo NF: </label>
-                    <input type="number" name="modelo" id="modelo" formControlName="modelo" >    
+                    <label for="modelo">Modelo:</label>
+                    <select name="modelo" id="modelo" formControlName="modelo">
+                        <option value="55">55 - NFe</option>
+                        <option value="57">57 - CTe</option>
+                    </select>              
                 </div>
 
                 <div>
