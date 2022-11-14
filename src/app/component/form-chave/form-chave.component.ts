@@ -30,7 +30,7 @@ export class FormChaveComponent implements OnInit {
       uf: ['35'],
       emissao: ['',[Validators.required]],
       cnpj: ['',[Validators.minLength(14), Validators.maxLength(14), Validators.required]],
-      modelo: [{value: '55', disabled: true}],
+      modelo: [{value: '55', disabled: false}],
       serie: ['',[Validators.required]],
       numeroNF: ['', [Validators.required]],
       formaEmissao: [{value:'1', disabled:true}],
