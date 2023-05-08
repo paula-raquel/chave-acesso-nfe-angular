@@ -10,6 +10,11 @@ import { ClipboardModule }  from '@angular/cdk/clipboard';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './component/home/home.component';
 
+import { ToolbarComponent } from './component/toolbar/toolbar.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+
+
 
 
 @NgModule({
@@ -17,7 +22,8 @@ import { HomeComponent } from './component/home/home.component';
     AppComponent,
     FormChaveComponent,
     FooterComponent,
-    HomeComponent
+    HomeComponent,
+    ToolbarComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +31,9 @@ import { HomeComponent } from './component/home/home.component';
     BrowserAnimationsModule,
     ClipboardModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatToolbarModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
