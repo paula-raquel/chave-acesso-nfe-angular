@@ -7,6 +7,8 @@ import { FooterComponent } from './component/footer/footer.component';
 import { FormChaveComponent } from './component/form-chave/form-chave.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ClipboardModule }  from '@angular/cdk/clipboard';
+import { AppRoutingModule } from './app-routing.module';
+import { HomeComponent } from './component/home/home.component';
 
 
 
@@ -14,14 +16,16 @@ import { ClipboardModule }  from '@angular/cdk/clipboard';
   declarations: [
     AppComponent,
     FormChaveComponent,
-    FooterComponent
+    FooterComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     BrowserAnimationsModule,
     ClipboardModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
