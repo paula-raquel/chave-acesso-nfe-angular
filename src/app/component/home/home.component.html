@@ -1,22 +1,26 @@
 <app-toolbar></app-toolbar>
 
-<fieldset>
-    <li>SOBRE</li>
-    É um site gratuito que oferece ferramentas para auxiliar testes para ambientes de desenvolvimento.
-</fieldset>
+<body>
 
-<fieldset>
-    <li>TERMOS DE USO</li>
-    Não nos responsabilizamos pelo o seu uso. Proibido para uso em produção. 
-</fieldset>
+    <fieldset>
+        <li>SOBRE</li>
+        É um site gratuito que oferece ferramentas para auxiliar testes para ambientes de desenvolvimento.
+    </fieldset>
 
-<fieldset>
-    <li>FERRAMENTAS</li>
-    <div>
-        Geradores de chave de acesso para NFe e CTe e criador de XML de NFe e NCFe.
-    </div>
-    <button>Gerador XML</button>
-    <button routerLink="/gerador-chave">Gerador Chave de Acesso</button>
-</fieldset>
+    <fieldset>
+        <li>TERMOS DE USO</li>
+        Não nos responsabilizamos pelo o seu uso. Proibido para uso em produção.
+    </fieldset>
 
-<router-outlet></router-outlet>
+    <fieldset>
+        <li>FERRAMENTAS</li>
+        <div>
+            Geradores de chave de acesso para NF-e/CT-e e criador de XML de NF-e.
+        </div>
+        <ul><button mat-raised-button color="primary">Gerador XML</button></ul>
+        <ul><button mat-raised-button color="primary" routerLink="/gerador-chave">Gerador Chave de Acesso</button></ul>
+    </fieldset>
+
+    <router-outlet></router-outlet>
+
+</body>

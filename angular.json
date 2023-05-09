@@ -89,7 +89,7 @@
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
             "assets": [
-              "src/favicon.ico",
+              "src/assets/imagem/logotipo_pequeno.ico",
               "src/assets"
             ],
             "styles": [

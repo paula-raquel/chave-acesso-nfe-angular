@@ -2,4 +2,12 @@
 @import '~normalize.css';
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap');
 
+
+:root {
+    --primary-color: #32BC93;
+    --secondary-color: #329BD5;
+
+
+}
+
 body { overflow-x: hidden; }
