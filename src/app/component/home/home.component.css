@@ -16,4 +16,5 @@ fieldset{
 li{
     font-weight: bold;
     color: var(--primary-color);
+    padding: 5px;
 }

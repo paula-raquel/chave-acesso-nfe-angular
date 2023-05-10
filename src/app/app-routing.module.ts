@@ -1,11 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './component/home/home.component';
-import { FormChaveComponent } from './component/form-chave/form-chave.component';
+import { AppComponent } from './app.component';
+import { HomeModule } from './component/home/home.module';
 
 const APP_ROUTES: Routes = [
-  { path: 'gerador-chave', component: FormChaveComponent },
-  { path: '', component: HomeComponent }
+  {
+    path: '', component: AppComponent,
+    children: [
+      { path: '', redirectTo: 'home', pathMatch: "full" },
+      { path: 'home', loadChildren: () => import('./component/home/home.module').then((m) => HomeModule) }
+    ]
+  }
 ]
 
 @NgModule({
