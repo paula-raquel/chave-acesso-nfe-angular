@@ -1,0 +1,67 @@
+@use '@angular/material' as mat;
+@include mat.core();
+
+$custom-palette: (
+ 50: #32BC93,
+ 100: #32BC93,
+ 200: #32BC93,
+ 300: #32BC93,
+ 400: #32BC93,
+ 500: #32BC93,
+ 600: #32BC93,
+ 700: #32BC93,
+ 800: #32BC93,
+ 900: #32BC93,
+ contrast: (
+   50: rgba(black, 0.87),
+   100: rgba(black, 0.87),
+   200: rgba(black, 0.87),
+   300: rgba(black, 0.87),
+   400: rgba(black, 0.87),
+   500: rgba(black, 0.87),
+   600: rgba(black, 0.87),
+   700: rgba(black, 0.87),
+   800: rgba(black, 0.87),
+   900: rgba(black, 0.87),
+ )
+);
+
+$custom-palette-accent: (
+ 50: #fdffff,
+ 100: #fdffff,
+ 200: #fdffff,
+ 300: #fdffff,
+ 400: #fdffff,
+ 500: #fdffff,
+ 600: #fdffff,
+ 700: #fdffff,
+ 800: #fdffff,
+ 900: #fdffff,
+ contrast: (
+   50: rgba(black, 0.87),
+   100: rgba(black, 0.87),
+   200: rgba(black, 0.87),
+   300: rgba(black, 0.87),
+   400: rgba(black, 0.87),
+   500: rgba(black, 0.87),
+   600: rgba(black, 0.87),
+   700: rgba(black, 0.87),
+   800: rgba(black, 0.87),
+   900: rgba(black, 0.87),
+ )
+);
+
+$my-primary: mat.define-palette($custom-palette);
+$my-accent: mat.define-palette($custom-palette-accent);
+
+$my-theme: mat.define-light-theme((
+ color: (
+   primary: $my-primary,
+   accent: $my-accent,
+ ),
+ typography: mat.define-typography-config(),
+ density: 0,
+));
+
+@include mat.core-theme($my-theme);
+@include mat.all-component-themes($my-theme);

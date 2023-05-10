@@ -7,21 +7,34 @@ import { FooterComponent } from './component/footer/footer.component';
 import { FormChaveComponent } from './component/form-chave/form-chave.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ClipboardModule }  from '@angular/cdk/clipboard';
+import { AppRoutingModule } from './app-routing.module';
+import { HomeComponent } from './component/home/home.component';
 
-
+import { ToolbarComponent } from './component/toolbar/toolbar.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
     AppComponent,
     FormChaveComponent,
-    FooterComponent
+    FooterComponent,
+    HomeComponent,
+    ToolbarComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     BrowserAnimationsModule,
     ClipboardModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AppRoutingModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatMenuModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

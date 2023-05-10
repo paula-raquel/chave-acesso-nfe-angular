@@ -1,0 +1,33 @@
+<app-toolbar></app-toolbar>
+
+<body>
+    <div *ngIf="disable()">
+        <fieldset>
+            <li>SOBRE</li>
+            É um site gratuito que oferece ferramentas para auxiliar testes para ambientes de desenvolvimento de software.
+        </fieldset>
+    
+        <fieldset>
+            <li>TERMOS DE USO</li>
+            Não nos responsabilizamos pelo o seu uso. Proibido o uso em produção.
+        </fieldset>
+    
+        <fieldset>
+            <li>FERRAMENTAS</li>
+            <div>
+                Geradores de chave de acesso para NF-e/CT-e e criador de XML de NF-e.
+            </div>
+            <ul><button mat-raised-button color="primary" (click)="imprimir()">Gerador XML NF-e <span style="color: white;">| Em
+                        Desenvolvimento</span> </button></ul>
+            <ul><button mat-raised-button color="primary" routerLink="gerador-chave">Gerador Chave de Acesso NF-e e
+                    CT-e</button></ul>
+        </fieldset>
+
+    </div>
+    
+
+    <div>
+        <router-outlet></router-outlet>
+    </div>
+
+</body>

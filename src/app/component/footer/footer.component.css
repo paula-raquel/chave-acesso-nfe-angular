@@ -1,9 +1,18 @@
+	
+
+
+footer { 
+    position:absolute; 
+    bottom:0; 
+    width: 100%; 
+}
 
 footer{
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 20px;
+    background-color: #32BC93;
 }
 
 footer div{
@@ -11,12 +20,18 @@ footer div{
 }
 
 .footer__icons--link{
-    text-decoration: none;
     padding: 10px;
+    text-decoration: none;
+
 }
 
 .footer__icons--link:hover{
     color: white;
     border: 1px solid white ;
     border-radius: 100%;
+}
+
+a:visited {
+    color: white;
+    text-decoration: none;
 }
