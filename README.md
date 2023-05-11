@@ -30,3 +30,8 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 # Leiaute da Home Page Ago/2022
 
 ![alt text](https://github.com/paula-raquel/chave-acesso-nfe-angular/blob/main/src/assets/imagem/app-web.png)
+
+
+# Atualização da Home Page Mai/2023
+
+![alt text](https://github.com/paula-raquel/chave-acesso-nfe-angular/blob/main/src/assets/imagem/app-web2.png)
