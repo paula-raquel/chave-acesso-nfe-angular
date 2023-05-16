@@ -11,17 +11,18 @@ footer{
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px;
+    padding: 5px;
     background-color: #32BC93;
 }
 
 footer div{
-    padding: 10px;
+    padding: 5px;
 }
 
 .footer__icons--link{
-    padding: 10px;
+    padding: 5px;
     text-decoration: none;
+    margin: 3px;
 
 }
 

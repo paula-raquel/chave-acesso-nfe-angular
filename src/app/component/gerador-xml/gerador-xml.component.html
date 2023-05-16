@@ -1,0 +1,174 @@
+<body>
+  <header>
+      <h1>Gerador XML NF-e</h1>
+
+  </header>
+  <main>
+      <section>
+          <mat-stepper [linear]="isLinear" #stepper>
+
+              <mat-step [stepControl]="firstFormDadosPessoais">
+
+                  <form [formGroup]="firstFormDadosPessoais">
+                      <ng-template matStepLabel> Dados Pessoas </ng-template>
+                      <div>
+                          <mat-form-field appearance="outline">
+                              <mat-label>Tipo</mat-label>
+                              <mat-select formControlName="tipoPessoa">
+                                  <mat-option value="JURIDICA"> Jurídica </mat-option>
+                                  <mat-option value="FISICA"> Física </mat-option>
+                              </mat-select>
+                          </mat-form-field>
+                          <mat-form-field appearance="outline" style="width: 50%;">
+                              <mat-label> CPF/CNPJ </mat-label>
+                              <input matInput placeholder="Digite o CPF/CNPJ" formControlName="cpfCnpj">
+                          </mat-form-field>
+                      </div>
+                      <div>
+                          <mat-form-field appearance="outline" style="width: 100%;">
+                              <mat-label>Razão Social</mat-label>
+                              <input matInput placeholder="Digite a razão social" formControlName="razaoSocial">
+                          </mat-form-field>
+                      </div>
+                      <div>
+                          <mat-form-field appearance="outline" style="width: 100%;">
+                              <mat-label>Nome Fantasia</mat-label>
+                              <input matInput placeholder="Digite o nome fantasia" formControlName="nomeFantasia">
+                          </mat-form-field>
+                      </div>
+                      <div>
+                          <mat-form-field appearance="outline" style="width: 100%;">
+                              <mat-label>Sigla/Apelido</mat-label>
+                              <input matInput placeholder="Digite o apelido" formControlName="siglaApelido">
+                          </mat-form-field>
+                      </div>
+                      <div>
+                          <button class="btn-avancar" matStepperNext><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="skip_next"></mat-icon> <span>Avançar</span> </button>
+                      </div>
+                  </form>
+              </mat-step>
+
+              <mat-step [stepControl]="secondFormGroupEndereco">
+                  <form [formGroup]="secondFormGroupEndereco">
+                      <ng-template matStepLabel> Endereços </ng-template>
+                      <div>
+                          <mat-form-field appearance="outline">
+                              <mat-label>Tipo</mat-label>
+                              <mat-select formControlName="tipoEndereco" >
+                                  <mat-option value="RESIDENCIAL"> Residencial </mat-option>
+                                  <mat-option value="COMERCIAL"> Comercial </mat-option>
+                              </mat-select>
+                          </mat-form-field>
+
+                          <mat-form-field appearance="outline" style="width: 50%;">
+                              <mat-label>CEP</mat-label>
+                              <input matInput placeholder="Digite o CEP, informe apenas numeros" formControlName="cep" (keyup)="consultarCep()">
+                          </mat-form-field>
+
+                      </div>
+
+                      <div>
+                          <mat-form-field appearance="outline" style="width: 100%;">
+                              <mat-label> Logradouro </mat-label>
+                              <input matInput placeholder="Digite o logradouro" formControlName="logradouro">
+                          </mat-form-field>
+                      </div>
+                      <div>
+                          <mat-form-field appearance="outline" style="width: 20%;">
+                              <mat-label> Numero </mat-label>
+                              <input matInput placeholder="Digite o numero" formControlName="numero">
+                          </mat-form-field>
+
+                          <mat-form-field appearance="outline" style="width: 77%;">
+                              <mat-label> Complemento </mat-label>
+                              <input matInput placeholder="Digite o complemento" formControlName="complemento">
+                          </mat-form-field>
+                      </div>
+                      <div>
+                          <mat-form-field appearance="outline" style="width: 30%;">
+                              <mat-label> Bairro </mat-label>
+                              <input matInput placeholder="Digite o bairro" formControlName="bairro">
+                          </mat-form-field>
+
+                          <mat-form-field appearance="outline">
+                              <mat-label> Estado </mat-label>
+                              <mat-select formControlName="estado">
+                                  <mat-option value="SP"> SP </mat-option>
+                                  <mat-option value="RJ"> RJ </mat-option>
+                              </mat-select>
+                          </mat-form-field>
+
+                          <mat-form-field appearance="outline" style="width: 40%;">
+                              <mat-label> Município </mat-label>
+                              <mat-select formControlName="municipio">
+                                  <mat-option value="São Paulo"> São Paulo </mat-option>
+                                  <mat-option value="Campinas"> Campinas </mat-option>
+                              </mat-select>
+                          </mat-form-field>
+                      </div>
+
+                      <div>
+                          <button class="btn-voltar" mat-button matStepperPrevious><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="skip_previous"></mat-icon>Voltar</button>
+                          <button class="btn-avancar" matStepperNext><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="skip_next"></mat-icon>Avançar</button>
+                      </div>
+                  </form>
+              </mat-step>
+
+              <mat-step [stepControl]="thirdFormGroupContato">
+                  <form [formGroup]="thirdFormGroupContato">
+                      <ng-template matStepLabel> Contatos </ng-template>
+                      <div>
+                          <mat-form-field appearance="outline">
+                              <mat-label>Tipo</mat-label>
+                              <mat-select formControlName="tipoContato">
+                                  <mat-option value="WHATSAPP"> Whatsapp </mat-option>
+                                  <mat-option value="CELULAR"> Celular </mat-option>
+                                  <mat-option value="TELEFONE"> Telefone </mat-option>
+                                  <mat-option value="EMAIL"> E-mail </mat-option>
+                              </mat-select>
+                          </mat-form-field>
+
+                      </div>
+                      <div>
+                          <mat-form-field appearance="outline" style="width: 45%;">
+                              <mat-label> Descricação </mat-label>
+                              <input matInput placeholder="Digite a descrição" formControlName="descricao">
+                          </mat-form-field>
+                          <mat-form-field appearance="outline" style="width: 45%;">
+                              <mat-label>Contato</mat-label>
+                              <input matInput placeholder="Digite dados contato" formControlName="contato">
+                          </mat-form-field>
+                      </div>
+                      <div>
+                          <button class="btn-voltar" mat-button matStepperPrevious><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="skip_previous"></mat-icon>Voltar</button>
+                          <button class="btn-avancar" matStepperNext><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="skip_next"></mat-icon>Avançar</button>
+                      </div>
+                  </form>
+              </mat-step>
+
+              <mat-step>
+                  <ng-template matStepLabel>Finalizar</ng-template>
+                  <p>Agora você terminou.</p>
+                  <div>
+                      <button class="btn-voltar" mat-button matStepperPrevious><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="skip_previous"></mat-icon>Voltar</button>
+                      <button class="btn-salvar" mat-button >
+                        <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="save"></mat-icon>
+                          Salvar
+                      </button>
+                      <!--
+                          <button mat-button (click)="stepper.reset()">Reset</button>
+                      -->
+                  </div>
+              </mat-step>
+          </mat-stepper>
+      </section>
+
+      <div class="button-align-left">
+        <button class="btn-cancelar"><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="cancel"></mat-icon>
+            Cancelar
+        </button>
+    </div>
+
+
+  </main>
+</body>

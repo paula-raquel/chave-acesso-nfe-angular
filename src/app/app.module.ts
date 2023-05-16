@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
+
 
 import { AppComponent } from './app.component';
 import { FooterComponent } from './component/footer/footer.component';
 import { FormChaveComponent } from './component/form-chave/form-chave.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ClipboardModule }  from '@angular/cdk/clipboard';
+import { ClipboardModule } from '@angular/cdk/clipboard';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './component/home/home.component';
 
@@ -15,6 +17,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
+
 
 @NgModule({
   declarations: [
@@ -34,7 +37,9 @@ import { MatButtonModule } from '@angular/material/button';
     MatToolbarModule,
     MatIconModule,
     MatMenuModule,
-    MatButtonModule
+    MatButtonModule,
+    HttpClientModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

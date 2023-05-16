@@ -5,9 +5,67 @@
 
 :root {
     --primary-color: #32BC93;
+    --verdeclaro-color: #e9fdf7;
     --secondary-color: #329BD5;
+    --cinza-color: #eaeaea;
+    --red-color: #f44336;
+    --white-color: #ffffff;
 
 
 }
 
 body { overflow-x: hidden; }
+
+
+button {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 8px;
+    margin: 2px;
+    border: none;
+
+}
+
+button:disabled{
+    background-color: darkgray;
+    cursor: none;
+}
+
+button:hover:disabled{
+    background-color: darkgray;
+    cursor: none;
+    color: var(--white-color);
+
+}
+
+.btn-cancelar{
+    border-radius: 10px;
+    background-color: var(--red-color);   
+    color: var(--white-color);
+
+}
+
+.btn-avancar{
+    border-radius: 10px;
+    background-color: var(--secondary-color);   
+    color: var(--white-color);
+}
+
+.btn-voltar{
+    border-radius: 10px;
+    background-color: var(--cinza-color);   
+
+}
+
+.btn-limpar{
+    border-radius: 10px;
+    background-color: var(--cinza-color);   
+}
+
+.btn-salvar{
+    border-radius: 10px;
+    background-color: #32CD32;   
+    color: var(--white-color);
+
+}
