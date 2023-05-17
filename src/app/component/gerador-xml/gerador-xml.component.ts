@@ -19,12 +19,11 @@ export class GeradorXmlComponent {
   isLinear = false;
 
   consultarCep() {
-    let value = this.secondFormGroupEndereco.get('cep')?.value;
-
+    let value = this.formEnderecoEmitente.get('cep')?.value;
     if (value !== '' && value != null && value?.length == 8) {
       this.cepService.consultaCep(value).subscribe({
         next: data => {
-          this.secondFormGroupEndereco.patchValue({
+          this.formEnderecoEmitente.patchValue({
             logradouro: data.logradouro,
             complemento: data.complemento,
             bairro: data.bairro,
@@ -33,12 +32,12 @@ export class GeradorXmlComponent {
           });
         },
         complete: () => {
-          this.secondFormGroupEndereco.controls.logradouro.enable();
-          this.secondFormGroupEndereco.controls.numero.enable();
-          this.secondFormGroupEndereco.controls.complemento.enable();
-          this.secondFormGroupEndereco.controls.bairro.enable();
-          this.secondFormGroupEndereco.controls.estado.enable();
-          this.secondFormGroupEndereco.controls.municipio.enable();
+          this.formEnderecoEmitente.controls.logradouro.enable();
+          this.formEnderecoEmitente.controls.numero.enable();
+          this.formEnderecoEmitente.controls.complemento.enable();
+          this.formEnderecoEmitente.controls.bairro.enable();
+          this.formEnderecoEmitente.controls.estado.enable();
+          this.formEnderecoEmitente.controls.municipio.enable();
         }
 
       });
@@ -46,16 +45,28 @@ export class GeradorXmlComponent {
 
   }
 
-  firstFormDadosPessoais = this._formBuilder.group({
+  setNomeFantasiaEmitentePessoaFisica() {
+    let value = this.formDadosEmitente.get('tipoPessoa')?.value;
+    let valueRazaoSocial = this.formDadosEmitente.get('razaoSocial')?.value;
+    if (value == 'FISICA') {
+      this.formDadosEmitente.patchValue({
+        nomeFantasia: valueRazaoSocial,
+      });          
+    }
+
+  }
+
+
+  formDadosEmitente = this._formBuilder.group({
     tipoPessoa: ['JURIDICA', Validators.required],
+    crt: [{ value: '3', disabled: "true" }, Validators.required],
     cpfCnpj: ['', Validators.required],
+    ie: ['', Validators.required],
     razaoSocial: ['', Validators.required],
     nomeFantasia: ['', Validators.required],
-    siglaApelido: ['', Validators.required],
   });
 
-  secondFormGroupEndereco = this._formBuilder.group({
-    tipoEndereco: [{ value: 'RESIDENCIAL' }, Validators.required],
+  formEnderecoEmitente = this._formBuilder.group({
     cep: ['', [Validators.required, Validators.pattern('[0-9]+$')]],
     logradouro: [{ value: '', disabled: this.cepNaoConsultado }, Validators.required],
     numero: [{ value: '', disabled: this.cepNaoConsultado }],
@@ -64,6 +75,8 @@ export class GeradorXmlComponent {
     municipio: [{ value: 'São Paulo', disabled: this.cepNaoConsultado }, Validators.required],
     estado: [{ value: 'SP', disabled: this.cepNaoConsultado }, Validators.required],
   });
+
+
 
   thirdFormGroupContato = this._formBuilder.group({
     tipoContato: ['WHATSAPP', Validators.required],

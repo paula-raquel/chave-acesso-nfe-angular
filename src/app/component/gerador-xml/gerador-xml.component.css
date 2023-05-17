@@ -7,7 +7,7 @@ form{
 }
 
 mat-stepper {
-    background-color: var(--verdeclaro-color);
+    background: rgba(233, 253, 240, 0.8);
     margin: 10px;
     border-radius: 10px;
 }
@@ -19,4 +19,18 @@ mat-form-field {
 
 div {
     display: flex;
+    flex-wrap: wrap;
+}
+
+fieldset{
+    border-radius: 10px;
+    border-color:  var(--primary-color);
+    margin: 10px;
+}
+
+legend {
+    margin: 5px;
+    padding: 5px;
+    color:  var(--primary-color);
+
 }
