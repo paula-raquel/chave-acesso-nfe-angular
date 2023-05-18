@@ -1,0 +1,21 @@
+mat-form-field {
+    margin-right: 10px;
+}
+
+div {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+fieldset {
+    border-radius: 10px;
+    border-color: var(--primary-color);
+    margin: 10px;
+}
+
+legend {
+    margin: 5px;
+    padding: 5px;
+    color: var(--primary-color);
+
+}

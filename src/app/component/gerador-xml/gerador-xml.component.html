@@ -6,128 +6,19 @@
     <main>
         <section>
             <mat-stepper [linear]="isLinear" #stepper>
-
-                <mat-step [stepControl]="formDadosEmitente">
-                    <fieldset>
-                        <legend>Dados Pessoais</legend>
-                        <form [formGroup]="formDadosEmitente">
-                            <ng-template matStepLabel> Emitente </ng-template>
-                            <div>
-
-                                <mat-form-field appearance="outline">
-                                    <mat-label>Código de Regime Tributário</mat-label>
-                                    <mat-select formControlName="crt">
-                                        <mat-option value="1"> Simples Nacional </mat-option>
-                                        <mat-option value="2"> Simples Nacional, excesso sublimite de receita bruta
-                                        </mat-option>
-                                        <mat-option value="3"> Regime Normal </mat-option>
-                                    </mat-select>
-                                </mat-form-field>
-
-                                <mat-form-field appearance="outline">
-                                    <mat-label>Tipo</mat-label>
-                                    <mat-select formControlName="tipoPessoa">
-                                        <mat-option value="JURIDICA"> Jurídica </mat-option>
-                                        <mat-option value="FISICA"> Física </mat-option>
-                                    </mat-select>
-                                </mat-form-field>
-
-                                <mat-form-field appearance="outline" style="width: 35%;">
-                                    <mat-label> CPF/CNPJ </mat-label>
-                                    <input matInput placeholder="Digite o CPF/CNPJ" formControlName="cpfCnpj">
-                                </mat-form-field>
-                                <mat-form-field appearance="outline" style="width: 35%;">
-                                    <mat-label> IE </mat-label>
-                                    <input matInput
-                                        placeholder="Digite a Inscrição Estadual, caso não possua informe como ISENTO"
-                                        formControlName="ie">
-                                </mat-form-field>
-
-                            </div>
-
-                            <div>
-                                <mat-form-field appearance="outline" style="width: 100%;">
-                                    <mat-label>Razão Social</mat-label>
-                                    <input matInput placeholder="Digite a razão social" formControlName="razaoSocial" (keyup)="setNomeFantasiaEmitentePessoaFisica()">
-                                </mat-form-field>
-                            </div>
-                            <div>
-                                <mat-form-field appearance="outline" style="width: 100%;">
-                                    <mat-label>Nome Fantasia</mat-label>
-                                    <input matInput placeholder="Digite o nome fantasia" formControlName="nomeFantasia">
-                                </mat-form-field>
-                            </div>
-
-                        </form>
-                    </fieldset>
-
-                    <fieldset>
-                        <legend>Endereço</legend>
-                        <form [formGroup]="formEnderecoEmitente">
-                            <ng-template matStepLabel> Destinatário/Remetente </ng-template>
-                            <div>
-
-                                <mat-form-field appearance="outline" style="width: 50%;">
-                                    <mat-label>CEP</mat-label>
-                                    <input matInput placeholder="Digite o CEP, informe apenas numeros"
-                                        formControlName="cep" (keyup)="consultarCep()">
-                                </mat-form-field>
-
-                            </div>
-
-                            <div>
-                                <mat-form-field appearance="outline" style="width: 100%;">
-                                    <mat-label> Logradouro </mat-label>
-                                    <input matInput placeholder="Digite o logradouro" formControlName="logradouro">
-                                </mat-form-field>
-                            </div>
-                            <div>
-                                <mat-form-field appearance="outline" style="width: 20%;">
-                                    <mat-label> Numero </mat-label>
-                                    <input matInput placeholder="Digite o numero" formControlName="numero">
-                                </mat-form-field>
-
-                                <mat-form-field appearance="outline" style="width: 77%;">
-                                    <mat-label> Complemento </mat-label>
-                                    <input matInput placeholder="Digite o complemento" formControlName="complemento">
-                                </mat-form-field>
-                            </div>
-                            <div>
-                                <mat-form-field appearance="outline" style="width: 30%;">
-                                    <mat-label> Bairro </mat-label>
-                                    <input matInput placeholder="Digite o bairro" formControlName="bairro">
-                                </mat-form-field>
-
-                                <mat-form-field appearance="outline">
-                                    <mat-label> Estado </mat-label>
-                                    <mat-select formControlName="estado">
-                                        <mat-option value="SP"> SP </mat-option>
-                                        <mat-option value="RJ"> RJ </mat-option>
-                                    </mat-select>
-                                </mat-form-field>
-
-                                <mat-form-field appearance="outline" style="width: 40%;">
-                                    <mat-label> Município </mat-label>
-                                    <mat-select formControlName="municipio">
-                                        <mat-option value="São Paulo"> São Paulo </mat-option>
-                                        <mat-option value="Campinas"> Campinas </mat-option>
-                                    </mat-select>
-                                </mat-form-field>
-                            </div>
-
-                        </form>
-                    </fieldset>
-
+                <mat-step >
+                    <ng-template matStepLabel> Emitente</ng-template>
+                    <app-form-emitente #formEmitente></app-form-emitente>
                     <div>
-                        <button class="btn-avancar" matStepperNext><mat-icon aria-hidden="false"
+                        <button (click)="print(formEmitente)" class="btn-avancar" matStepperNext><mat-icon aria-hidden="false"
                                 aria-label="Example home icon" fontIcon="skip_next"></mat-icon> <span>Avançar</span>
                         </button>
                     </div>
                 </mat-step>
 
-                <mat-step [stepControl]="formEnderecoEmitente">
+                <mat-step>
                     <ng-template matStepLabel> Destinatário </ng-template>
-
+                    <app-form-destinatario></app-form-destinatario>
                     <div>
                         <button class="btn-voltar" mat-button matStepperPrevious><mat-icon aria-hidden="false"
                                 aria-label="Example home icon" fontIcon="skip_previous"></mat-icon>Voltar</button>
@@ -169,6 +60,7 @@
                         </div>
                     </form>
                 </mat-step>
+                -->
 
                 <mat-step>
                     <ng-template matStepLabel>Finalizar</ng-template>
