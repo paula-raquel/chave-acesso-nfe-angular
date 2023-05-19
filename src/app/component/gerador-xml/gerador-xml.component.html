@@ -10,7 +10,7 @@
                     <ng-template matStepLabel> Emitente</ng-template>
                     <app-form-emitente #formEmitente></app-form-emitente>
                     <div>
-                        <button (click)="print(formEmitente)" class="btn-avancar" matStepperNext><mat-icon aria-hidden="false"
+                        <button (click)="setDadosEmitente(formEmitente)" class="btn-avancar" matStepperNext><mat-icon aria-hidden="false"
                                 aria-label="Example home icon" fontIcon="skip_next"></mat-icon> <span>Avançar</span>
                         </button>
                     </div>
@@ -18,49 +18,15 @@
 
                 <mat-step>
                     <ng-template matStepLabel> Destinatário </ng-template>
-                    <app-form-destinatario></app-form-destinatario>
+                    <app-form-destinatario #formDestinatario></app-form-destinatario>
                     <div>
                         <button class="btn-voltar" mat-button matStepperPrevious><mat-icon aria-hidden="false"
                                 aria-label="Example home icon" fontIcon="skip_previous"></mat-icon>Voltar</button>
-                        <button class="btn-avancar" matStepperNext><mat-icon aria-hidden="false"
+                        <button (click)="setDadosDestinatario(formDestinatario)" class="btn-avancar" matStepperNext><mat-icon aria-hidden="false"
                                 aria-label="Example home icon" fontIcon="skip_next"></mat-icon>Avançar</button>
                     </div>
                 </mat-step>
 
-                <mat-step [stepControl]="thirdFormGroupContato">
-                    <form [formGroup]="thirdFormGroupContato">
-                        <ng-template matStepLabel> Operação </ng-template>
-                        <div>
-                            <mat-form-field appearance="outline">
-                                <mat-label>Tipo</mat-label>
-                                <mat-select formControlName="tipoContato">
-                                    <mat-option value="WHATSAPP"> Whatsapp </mat-option>
-                                    <mat-option value="CELULAR"> Celular </mat-option>
-                                    <mat-option value="TELEFONE"> Telefone </mat-option>
-                                    <mat-option value="EMAIL"> E-mail </mat-option>
-                                </mat-select>
-                            </mat-form-field>
-
-                        </div>
-                        <div>
-                            <mat-form-field appearance="outline" style="width: 45%;">
-                                <mat-label> Descricação </mat-label>
-                                <input matInput placeholder="Digite a descrição" formControlName="descricao">
-                            </mat-form-field>
-                            <mat-form-field appearance="outline" style="width: 45%;">
-                                <mat-label>Contato</mat-label>
-                                <input matInput placeholder="Digite dados contato" formControlName="contato">
-                            </mat-form-field>
-                        </div>
-                        <div>
-                            <button class="btn-voltar" mat-button matStepperPrevious><mat-icon aria-hidden="false"
-                                    aria-label="Example home icon" fontIcon="skip_previous"></mat-icon>Voltar</button>
-                            <button class="btn-avancar" matStepperNext><mat-icon aria-hidden="false"
-                                    aria-label="Example home icon" fontIcon="skip_next"></mat-icon>Avançar</button>
-                        </div>
-                    </form>
-                </mat-step>
-                -->
 
                 <mat-step>
                     <ng-template matStepLabel>Finalizar</ng-template>

@@ -15,25 +15,18 @@ export class GeradorXmlComponent {
 
   isLinear = true;
   formEmitente = FormGroup;
+  dadosEmitente ='';
+  dadosDestinatario ='';
 
-
-  formDadosEmitente = '';
-  onFormGroupChangeEvent( _event:any){
-    this.formDadosEmitente = _event;
+  setDadosEmitente (value: any){
+    this.dadosEmitente = value.formDadosEmitente.value;
+    console.log(this.dadosEmitente)
   }
 
-  print (value: any){
-    console.log(value.formDadosEmitente.status)
+  setDadosDestinatario (value: any){
+    this.dadosDestinatario = value.formDadosDestinatario.value;
+    console.log(this.dadosDestinatario)
   }
-
-
-
-  thirdFormGroupContato = this._formBuilder.group({
-    tipoContato: ['WHATSAPP', Validators.required],
-    descricao: ['', Validators.required],
-    contato: ['', Validators.required],
-  });
-
 
 
 
