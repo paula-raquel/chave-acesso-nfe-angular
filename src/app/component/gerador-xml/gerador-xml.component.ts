@@ -1,6 +1,6 @@
-import { Component, OnChanges } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatStep, MatStepper } from '@angular/material/stepper';
+import { Component } from '@angular/core';
+import { FormBuilder} from '@angular/forms';
+import { Router } from '@angular/router';
 import { ConsultaCepService } from 'src/app/service/consulta-cep.service';
 import { DataXmlTagService } from 'src/app/service/data-xml-tag.service';
 
@@ -13,7 +13,8 @@ export class GeradorXmlComponent{
   constructor(
     private _formBuilder: FormBuilder,
     private cepService: ConsultaCepService,
-    private _dataXmlTagService: DataXmlTagService
+    private _dataXmlTagService: DataXmlTagService,
+    private route: Router
     ) { }
 
   isLinear = true;
@@ -42,7 +43,7 @@ export class GeradorXmlComponent{
   salvarXML(){
     this._dataXmlTagService.setDadosEmitente(this.dadosEmitente);
     this._dataXmlTagService.setDadosDestinatario(this.dadosDestinatario);
-    console.log(this._dataXmlTagService.getDadosEmitente(), this._dataXmlTagService.getDadosDestinatario());
+    this.route.navigateByUrl('home/xml-tags');
   }
 
 
