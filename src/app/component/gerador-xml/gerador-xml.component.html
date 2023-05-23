@@ -6,9 +6,9 @@
     <main>
         <section>
             <mat-stepper [linear]="isLinear" #stepper>
-                <mat-step [completed]="isFormEmitenteValido" #stepper>
+                <mat-step [completed]="isFormEmitenteValido">
                     <ng-template matStepLabel> Emitente</ng-template>
-                    <app-form-emitente (statusForm)="setStatusForm($event)" #formEmitente></app-form-emitente>
+                    <app-form-emitente (statusForm)="setStatusFormEmitente($event)" #formEmitente></app-form-emitente>
                     <div>
                         <button (click)="setDadosEmitente(formEmitente )" class="btn-avancar" matStepperNext><mat-icon aria-hidden="false"
                                 aria-label="Example home icon" fontIcon="skip_next"></mat-icon> <span>Avançar</span>
@@ -18,7 +18,7 @@
 
                 <mat-step [completed]="isFormDestinatarioValido">
                     <ng-template matStepLabel> Destinatário </ng-template>
-                    <app-form-destinatario #formDestinatario></app-form-destinatario>
+                    <app-form-destinatario (statusForm)="setStatusFormDestinatario($event)" #formDestinatario></app-form-destinatario>
                     <div>
                         <button class="btn-voltar" mat-button matStepperPrevious><mat-icon aria-hidden="false"
                                 aria-label="Example home icon" fontIcon="skip_previous"></mat-icon>Voltar</button>
@@ -34,7 +34,7 @@
                     <div>
                         <button class="btn-voltar" mat-button matStepperPrevious><mat-icon aria-hidden="false"
                                 aria-label="Example home icon" fontIcon="skip_previous"></mat-icon>Voltar</button>
-                        <button class="btn-salvar" mat-button>
+                        <button class="btn-salvar" mat-button (click)="salvarXML()">
                             <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="save"></mat-icon>
                             Gerar XML
                         </button>

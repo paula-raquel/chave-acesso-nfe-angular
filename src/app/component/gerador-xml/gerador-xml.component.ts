@@ -2,6 +2,7 @@ import { Component, OnChanges } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatStep, MatStepper } from '@angular/material/stepper';
 import { ConsultaCepService } from 'src/app/service/consulta-cep.service';
+import { DataXmlTagService } from 'src/app/service/data-xml-tag.service';
 
 @Component({
   selector: 'app-gerador-xml',
@@ -11,7 +12,8 @@ import { ConsultaCepService } from 'src/app/service/consulta-cep.service';
 export class GeradorXmlComponent{
   constructor(
     private _formBuilder: FormBuilder,
-    private cepService: ConsultaCepService
+    private cepService: ConsultaCepService,
+    private _dataXmlTagService: DataXmlTagService
     ) { }
 
   isLinear = true;
@@ -21,8 +23,12 @@ export class GeradorXmlComponent{
   dadosEmitente = '';
   dadosDestinatario ='';
   
-  setStatusForm(evento: any){
+  setStatusFormEmitente(evento: any){
     this.isFormEmitenteValido = evento;
+  }
+
+  setStatusFormDestinatario(evento: any){
+    this.isFormDestinatarioValido = evento;
   }
 
   setDadosEmitente (evento: any){
@@ -31,9 +37,13 @@ export class GeradorXmlComponent{
 
   setDadosDestinatario (value: any){
     this.dadosDestinatario = value.formDadosDestinatario.value;
-    console.log(this.dadosDestinatario)
   }
 
+  salvarXML(){
+    this._dataXmlTagService.setDadosEmitente(this.dadosEmitente);
+    this._dataXmlTagService.setDadosDestinatario(this.dadosDestinatario);
+    console.log(this._dataXmlTagService.getDadosEmitente(), this._dataXmlTagService.getDadosDestinatario());
+  }
 
 
 }

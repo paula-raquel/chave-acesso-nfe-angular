@@ -1,7 +1,6 @@
-import { Component, EventEmitter, Output, Input, OnChanges, SimpleChanges, OnInit } from '@angular/core';
-import { FormBuilder,  FormGroup,  Validators } from '@angular/forms';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { ConsultaCepService } from 'src/app/service/consulta-cep.service';
-import { FormValidationsService } from 'src/app/service/form-validations.service';
 
 @Component({
   selector: 'app-form-emitente',
@@ -13,7 +12,7 @@ export class FormEmitenteComponent {
   constructor(
     private _formBuilder: FormBuilder,
     private cepService: ConsultaCepService
-  ) {}
+  ) { }
 
   cepNaoConsultado = true;
 
@@ -64,7 +63,7 @@ export class FormEmitenteComponent {
   consultarCep() {
     let value = this.formDadosEmitente.get('endereco.cep')?.value;
     let controls = this.formDadosEmitente.controls.endereco.controls
-    if (value !== '' && value != null && value?.length === 8 ) {
+    if (value !== '' && value != null && value?.length === 8) {
       this.cepService.consultaCep(value).subscribe({
         next: data => {
           this.formDadosEmitente.patchValue({
@@ -89,19 +88,19 @@ export class FormEmitenteComponent {
     }
   }
 
-  isPessoaJuridica(){
-    if(this.formDadosEmitente.get('tipoPessoa')?.value ==='JURIDICA'){
-      return true;
-    }
-    return false;
-  }
-
-  tipoPessoa(){
-    if (this.formDadosEmitente.get('tipoPessoa')?.value ==='FISICA'){
+  tipoPessoa() {
+    if (this.formDadosEmitente.get('tipoPessoa')?.value === 'FISICA') {
       this.formDadosEmitente.patchValue({
         ie: '',
       });
     }
+  }
+
+  isPessoaJuridica() {
+    if (this.formDadosEmitente.get('tipoPessoa')?.value === 'JURIDICA') {
+      return true;
+    }
+    return false;
   }
 
 
