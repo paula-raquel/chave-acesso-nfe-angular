@@ -6,17 +6,17 @@
     <main>
         <section>
             <mat-stepper [linear]="isLinear" #stepper>
-                <mat-step >
+                <mat-step [completed]="isFormEmitenteValido" #stepper>
                     <ng-template matStepLabel> Emitente</ng-template>
-                    <app-form-emitente #formEmitente></app-form-emitente>
+                    <app-form-emitente (statusForm)="setStatusForm($event)" #formEmitente></app-form-emitente>
                     <div>
-                        <button (click)="setDadosEmitente(formEmitente)" class="btn-avancar" matStepperNext><mat-icon aria-hidden="false"
+                        <button (click)="setDadosEmitente(formEmitente )" class="btn-avancar" matStepperNext><mat-icon aria-hidden="false"
                                 aria-label="Example home icon" fontIcon="skip_next"></mat-icon> <span>Avançar</span>
                         </button>
                     </div>
                 </mat-step>
 
-                <mat-step>
+                <mat-step [completed]="isFormDestinatarioValido">
                     <ng-template matStepLabel> Destinatário </ng-template>
                     <app-form-destinatario #formDestinatario></app-form-destinatario>
                     <div>

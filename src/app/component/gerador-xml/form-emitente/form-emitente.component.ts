@@ -1,6 +1,7 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, EventEmitter, Output, Input, OnChanges, SimpleChanges, OnInit } from '@angular/core';
+import { FormBuilder,  FormGroup,  Validators } from '@angular/forms';
 import { ConsultaCepService } from 'src/app/service/consulta-cep.service';
+import { FormValidationsService } from 'src/app/service/form-validations.service';
 
 @Component({
   selector: 'app-form-emitente',
@@ -12,14 +13,58 @@ export class FormEmitenteComponent {
   constructor(
     private _formBuilder: FormBuilder,
     private cepService: ConsultaCepService
-  ) { }
+  ) {}
 
   cepNaoConsultado = true;
+
+  formDadosEmitente = this._formBuilder.group({
+    tipoPessoa: ['JURIDICA', Validators.required],
+    crt: [{ value: '3', disabled: "true" }, Validators.required],
+    cpfCnpj: ['', Validators.required],
+    ie: [''],
+    razaoSocial: ['', Validators.required],
+    nomeFantasia: ['', Validators.required],
+    endereco: this._formBuilder.group({
+      cep: ['', [Validators.required, Validators.pattern('[0-9]+$'), Validators.minLength(8), Validators.maxLength(8)]],
+      logradouro: [{ value: '', disabled: this.cepNaoConsultado }, Validators.required],
+      numero: [{ value: '', disabled: this.cepNaoConsultado }],
+      complemento: [{ value: '', disabled: this.cepNaoConsultado }],
+      bairro: [{ value: '', disabled: this.cepNaoConsultado }, Validators.required],
+      municipio: [{ value: 'São Paulo', disabled: this.cepNaoConsultado }, Validators.required],
+      estado: [{ value: 'SP', disabled: this.cepNaoConsultado }, Validators.required],
+    })
+  });
+
+  setNomeFantasiaEmitentePessoaFisica() {
+    let value = this.formDadosEmitente.get('tipoPessoa')?.value;
+    let valueRazaoSocial = this.formDadosEmitente.get('razaoSocial')?.value;
+    if (value == 'FISICA') {
+      this.formDadosEmitente.patchValue({
+        nomeFantasia: valueRazaoSocial,
+      });
+    }
+  }
+
+  status = this.formDadosEmitente.statusChanges.subscribe((v) => {
+    this.isFormValid();
+  });
+
+  @Output()
+  statusForm = new EventEmitter<boolean>();
+
+  isFormValid() {
+    if (this.formDadosEmitente.status !== 'INVALID') {
+      this.statusForm.emit(true);
+    }
+    else {
+      this.statusForm.emit(false);
+    }
+  }
 
   consultarCep() {
     let value = this.formDadosEmitente.get('endereco.cep')?.value;
     let controls = this.formDadosEmitente.controls.endereco.controls
-    if (value !== '' && value != null && value?.length == 8) {
+    if (value !== '' && value != null && value?.length === 8 ) {
       this.cepService.consultaCep(value).subscribe({
         next: data => {
           this.formDadosEmitente.patchValue({
@@ -44,44 +89,20 @@ export class FormEmitenteComponent {
     }
   }
 
-  isPessoaJuridica() {
-    return this.formDadosEmitente.get('tipoPessoa')?.value === 'JURIDICA';
+  isPessoaJuridica(){
+    if(this.formDadosEmitente.get('tipoPessoa')?.value ==='JURIDICA'){
+      return true;
+    }
+    return false;
   }
 
-  setNomeFantasiaEmitentePessoaFisica() {
-    let value = this.formDadosEmitente.get('tipoPessoa')?.value;
-    let valueRazaoSocial = this.formDadosEmitente.get('razaoSocial')?.value;
-    if (value == 'FISICA') {
+  tipoPessoa(){
+    if (this.formDadosEmitente.get('tipoPessoa')?.value ==='FISICA'){
       this.formDadosEmitente.patchValue({
-        nomeFantasia: valueRazaoSocial,
+        ie: '',
       });
     }
-
   }
 
-  @Output()
-  notify = new EventEmitter<FormGroup>()
-
-  formDadosEmitente = this._formBuilder.group({
-    tipoPessoa: ['JURIDICA', Validators.required],
-    crt: [{ value: '3', disabled: "true" }, Validators.required],
-    cpfCnpj: ['', Validators.required],
-    ie: ['', Validators.required],
-    razaoSocial: ['', Validators.required],
-    nomeFantasia: ['', Validators.required],
-    endereco: this._formBuilder.group({
-      cep: ['', [Validators.required, Validators.pattern('[0-9]+$')]],
-      logradouro: [{ value: '', disabled: this.cepNaoConsultado }, Validators.required],
-      numero: [{ value: '', disabled: this.cepNaoConsultado }],
-      complemento: [{ value: '', disabled: this.cepNaoConsultado }],
-      bairro: [{ value: '', disabled: this.cepNaoConsultado }, Validators.required],
-      municipio: [{ value: 'São Paulo', disabled: this.cepNaoConsultado }, Validators.required],
-      estado: [{ value: 'SP', disabled: this.cepNaoConsultado }, Validators.required],
-    })
-  });
-
-  ngOnInit() {
-    this.notify.emit(this.formDadosEmitente);
-  }
 
 }

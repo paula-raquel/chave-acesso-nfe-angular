@@ -14,7 +14,7 @@
 
             <mat-form-field appearance="outline">
                 <mat-label>Tipo</mat-label>
-                <mat-select formControlName="tipoPessoa">
+                <mat-select formControlName="tipoPessoa" (blur)="tipoPessoa()">
                     <mat-option value="JURIDICA"> Jurídica </mat-option>
                     <mat-option value="FISICA"> Física </mat-option>
                 </mat-select>
