@@ -8,14 +8,48 @@ export class DataXmlTagService {
 
   constructor() { }
 
-  private dadosEmitente = {};
-  private dadosDestinatario = {};
+  dadosEmitente : EmitenteDestinatario = {
+    tipoPessoa: '',
+    crt: 3,
+    cpfCnpj: 0,
+    ie: 0,
+    razaoSocial: '',
+    nomeFantasia: '',
+    endereco: {
+      cep: 0,
+      logradouro: '',
+      numero: '',
+      complemento: '',
+      bairro: '',
+      municipio: 'SP',
+      estado: 'São Paulo'
+    }
+  };
+
+  dadosDestinatario : EmitenteDestinatario = {
+    tipoPessoa: '',
+    crt: 3,
+    cpfCnpj: 0,
+    ie: 0,
+    razaoSocial: '',
+    nomeFantasia: '',
+    endereco: {
+      cep: 0,
+      logradouro: '',
+      numero: '',
+      complemento: '',
+      bairro: '',
+      municipio: 'SP',
+      estado: 'São Paulo'
+    }
+  };
+
 
   setDadosEmitente(v :EmitenteDestinatario){
     this.dadosEmitente = v;
   }
 
-  getDadosEmitente(){
+  getDadosEmitente(): EmitenteDestinatario{
     return this.dadosEmitente;
   }
 
@@ -23,7 +57,7 @@ export class DataXmlTagService {
     this.dadosDestinatario = v;
   }
 
-  getDadosDestinatario(){
+  getDadosDestinatario() : EmitenteDestinatario{
     return this.dadosDestinatario;
   }
   

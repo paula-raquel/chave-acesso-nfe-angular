@@ -15,8 +15,42 @@ export class XmlTagsComponent {
     this.print();
   }
 
-  dadosEmitente= {}
-  dadosDestinatario= {}
+  dadosEmitente : EmitenteDestinatario = {
+    tipoPessoa: '',
+    crt: 3,
+    cpfCnpj: 0,
+    ie: 0,
+    razaoSocial: '',
+    nomeFantasia: '',
+    endereco: {
+      cep: 0,
+      logradouro: '',
+      numero: '',
+      complemento: '',
+      bairro: '',
+      municipio: 'SP',
+      estado: 'São Paulo'
+    }
+  };
+
+  dadosDestinatario : EmitenteDestinatario = {
+    tipoPessoa: '',
+    crt: 3,
+    cpfCnpj: 0,
+    ie: 0,
+    razaoSocial: '',
+    nomeFantasia: '',
+    endereco: {
+      cep: 0,
+      logradouro: '',
+      numero: '',
+      complemento: '',
+      bairro: '',
+      municipio: 'SP',
+      estado: 'São Paulo'
+    }
+  };
+
 
   print(){
     console.log (this.dadosDestinatario, this.dadosEmitente);
