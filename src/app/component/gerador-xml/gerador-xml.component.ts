@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder} from '@angular/forms';
 import { Router } from '@angular/router';
+import { EmitenteDestinatario } from 'src/app/models/emitenteDestinatario';
 import { ConsultaCepService } from 'src/app/service/consulta-cep.service';
 import { DataXmlTagService } from 'src/app/service/data-xml-tag.service';
 
@@ -11,8 +12,6 @@ import { DataXmlTagService } from 'src/app/service/data-xml-tag.service';
 })
 export class GeradorXmlComponent{
   constructor(
-    private _formBuilder: FormBuilder,
-    private cepService: ConsultaCepService,
     private _dataXmlTagService: DataXmlTagService,
     private route: Router
     ) { }
@@ -21,8 +20,41 @@ export class GeradorXmlComponent{
   isFormEmitenteValido = false;
   isFormDestinatarioValido = false;
   
-  dadosEmitente = '';
-  dadosDestinatario ='';
+  dadosEmitente : EmitenteDestinatario = {
+    tipoPessoa: '',
+    crt: 3,
+    cpfCnpj: 0,
+    ie: 0,
+    razaoSocial: '',
+    nomeFantasia: '',
+    endereco: {
+      cep: 0,
+      logradouro: '',
+      numero: '',
+      complemento: '',
+      bairro: '',
+      municipio: 'SP',
+      estado: 'São Paulo'
+    }
+  };
+
+  dadosDestinatario : EmitenteDestinatario = {
+    tipoPessoa: '',
+    crt: 3,
+    cpfCnpj: 0,
+    ie: 0,
+    razaoSocial: '',
+    nomeFantasia: '',
+    endereco: {
+      cep: 0,
+      logradouro: '',
+      numero: '',
+      complemento: '',
+      bairro: '',
+      municipio: 'SP',
+      estado: 'São Paulo'
+    }
+  };
   
   setStatusFormEmitente(evento: any){
     this.isFormEmitenteValido = evento;

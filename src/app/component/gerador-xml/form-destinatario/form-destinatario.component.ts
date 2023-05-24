@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Estado } from 'src/app/models/estado';
 import { ConsultaCepService } from 'src/app/service/consulta-cep.service';
+import DataUFService from 'src/app/service/dataservice.service';
 
 @Component({
   selector: 'app-form-destinatario',
@@ -11,10 +13,16 @@ export class FormDestinatarioComponent {
 
   constructor(
     private _formBuilder: FormBuilder,
-    private cepService: ConsultaCepService
-  ) { }
+    private cepService: ConsultaCepService,
+    private dataUfService: DataUFService
+
+  ) {
+    this.ufs = this.dataUfService.getEstado();
+   }
 
   cepNaoConsultado = true;
+  ufs: Estado[] = [];
+
 
   formDadosDestinatario = this._formBuilder.group({
     tipoPessoa: ['JURIDICA', Validators.required],

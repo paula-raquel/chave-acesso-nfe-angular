@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { EmitenteDestinatario } from '../models/emitenteDestinatario';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class DataXmlTagService {
   private dadosEmitente = {};
   private dadosDestinatario = {};
 
-  setDadosEmitente(v :any){
+  setDadosEmitente(v :EmitenteDestinatario){
     this.dadosEmitente = v;
   }
 
@@ -18,7 +19,7 @@ export class DataXmlTagService {
     return this.dadosEmitente;
   }
 
-  setDadosDestinatario(v :any){
+  setDadosDestinatario(v :EmitenteDestinatario){
     this.dadosDestinatario = v;
   }
 

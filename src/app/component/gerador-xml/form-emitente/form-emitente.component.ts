@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Estado } from 'src/app/models/estado';
 import { ConsultaCepService } from 'src/app/service/consulta-cep.service';
+import DataUFService from 'src/app/service/dataservice.service';
 
 @Component({
   selector: 'app-form-emitente',
@@ -8,11 +10,16 @@ import { ConsultaCepService } from 'src/app/service/consulta-cep.service';
   styleUrls: ['./form-emitente.component.css']
 })
 export class FormEmitenteComponent {
+   
+  ufs: Estado[] = [];
 
   constructor(
     private _formBuilder: FormBuilder,
-    private cepService: ConsultaCepService
-  ) { }
+    private cepService: ConsultaCepService,
+    private dataUfService: DataUFService
+  ) { 
+    this.ufs = this.dataUfService.getEstado();
+  }
 
   cepNaoConsultado = true;
 
@@ -29,8 +36,8 @@ export class FormEmitenteComponent {
       numero: [{ value: '', disabled: this.cepNaoConsultado }],
       complemento: [{ value: '', disabled: this.cepNaoConsultado }],
       bairro: [{ value: '', disabled: this.cepNaoConsultado }, Validators.required],
-      municipio: [{ value: 'São Paulo', disabled: this.cepNaoConsultado }, Validators.required],
-      estado: [{ value: 'SP', disabled: this.cepNaoConsultado }, Validators.required],
+      municipio: [{ value: '', disabled: this.cepNaoConsultado }, Validators.required],
+      estado: [{ value: '', disabled: this.cepNaoConsultado }, Validators.required],
     })
   });
 
@@ -72,7 +79,7 @@ export class FormEmitenteComponent {
               complemento: data.complemento,
               bairro: data.bairro,
               estado: data.uf,
-              municipio: data.localidade
+              municipio: data.localidade,
             }
           });
         },

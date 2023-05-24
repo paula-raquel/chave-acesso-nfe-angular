@@ -1,6 +1,6 @@
 import { Component, OnInit, } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { DataserviceService } from 'src/app/service/dataservice.service';
+import DataUFService from 'src/app/service/dataservice.service';
 
 
 @Component({
@@ -20,7 +20,7 @@ export class FormChaveComponent implements OnInit {
   formulario!: FormGroup;
 
   constructor(
-    private dataService:DataserviceService, private formBuilder:FormBuilder) {
+    private dataService:DataUFService, private formBuilder:FormBuilder) {
   }
 
 

@@ -85,18 +85,15 @@
                 <mat-form-field appearance="outline">
                     <mat-label> Estado </mat-label>
                     <mat-select formControlName="estado">
-                        <mat-option value="SP"> SP </mat-option>
-                        <mat-option value="RJ"> RJ </mat-option>
+                        <mat-option [value]="uf.uf" *ngFor="let uf of ufs "> {{uf.nome}} ({{uf.uf}}) </mat-option>
                     </mat-select>
                 </mat-form-field>
 
                 <mat-form-field appearance="outline" style="width: 40%;">
                     <mat-label> Município </mat-label>
-                    <mat-select formControlName="municipio">
-                        <mat-option value="São Paulo"> São Paulo </mat-option>
-                        <mat-option value="Campinas"> Campinas </mat-option>
-                    </mat-select>
+                    <input matInput placeholder="Digite a cidade" formControlName="municipio">
                 </mat-form-field>
+
             </div>
         </div>
 

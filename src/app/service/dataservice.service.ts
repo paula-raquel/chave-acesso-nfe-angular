@@ -4,7 +4,7 @@ import { Estado } from '../models/estado';
 @Injectable({
   providedIn: 'root'
 })
-export class DataserviceService {
+export default class DataUFService {
 
   constructor() { }
 

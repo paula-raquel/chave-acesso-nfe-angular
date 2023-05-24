@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { EmitenteDestinatario } from 'src/app/models/emitenteDestinatario';
 import { DataXmlTagService } from 'src/app/service/data-xml-tag.service';
 
 @Component({
@@ -14,11 +15,11 @@ export class XmlTagsComponent {
     this.print();
   }
 
-  dadosEmitente= {};
+  dadosEmitente= {}
   dadosDestinatario= {}
 
   print(){
-    console.log (this.dadosDestinatario, this.dadosDestinatario);
+    console.log (this.dadosDestinatario, this.dadosEmitente);
   }
 
 }
